@@ -16,7 +16,8 @@ class MainCoordinator: CoordinatorProtocol {
 
     func start() {
         let viewController = AdvertisementsViewController()
-        let presenter = AdvertisementsPresenter(view: viewController, coordinator: self)
+        
+        viewController.presenter = AdvertisementsPresenter(view: viewController, coordinator: self)
 
         navigationController.pushViewController(viewController, animated: false)
     }

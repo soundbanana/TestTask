@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF1004E32A9D0EA10050F81B /* AdvertisementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1004E22A9D0EA10050F81B /* AdvertisementPreview.swift */; };
 		FF1004E92A9D122E0050F81B /* AdvertisementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1004E82A9D122E0050F81B /* AdvertisementsService.swift */; };
 		FF1004EB2A9D19DF0050F81B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1004EA2A9D19DF0050F81B /* NetworkError.swift */; };
 		FF52BED92A9A1FBD00E09E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BED82A9A1FBD00E09E24 /* AppDelegate.swift */; };
@@ -24,7 +23,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FF1004E22A9D0EA10050F81B /* AdvertisementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementPreview.swift; sourceTree = "<group>"; };
 		FF1004E82A9D122E0050F81B /* AdvertisementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementsService.swift; sourceTree = "<group>"; };
 		FF1004EA2A9D19DF0050F81B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FF52BED52A9A1FBD00E09E24 /* TestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,19 +112,19 @@
 		FF52BEF82A9A642100E09E24 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				FF52BEF92A9A642F00E09E24 /* Main */,
+				FF52BEF92A9A642F00E09E24 /* Advertisements */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		FF52BEF92A9A642F00E09E24 /* Main */ = {
+		FF52BEF92A9A642F00E09E24 /* Advertisements */ = {
 			isa = PBXGroup;
 			children = (
 				FF52BEFE2A9A64A000E09E24 /* Presenter */,
 				FF52BEFD2A9A649700E09E24 /* View */,
 				FF1004E22A9D0EA10050F81B /* AdvertisementPreview.swift */,
 			);
-			path = Main;
+			path = Advertisements;
 			sourceTree = "<group>";
 		};
 		FF52BEFB2A9A645B00E09E24 /* Coordinators */ = {
@@ -149,8 +147,8 @@
 		FF52BEFD2A9A649700E09E24 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FF52BEDC2A9A1FBD00E09E24 /* AdvertisementsViewController.swift */,
 				FF52BF012A9A7FEB00E09E24 /* AdvertisementsCollectionViewCell.swift */,
+				FF52BEDC2A9A1FBD00E09E24 /* AdvertisementsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
