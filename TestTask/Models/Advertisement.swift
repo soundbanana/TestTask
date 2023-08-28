@@ -1,5 +1,5 @@
 //
-//  Product.swift
+//  Advertisement.swift
 //  TestTask
 //
 //  Created by Daniil Chemaev on 26.08.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Advertisement: Hashable {
+struct Advertisement: Codable, Hashable {
     let id: String
     let title: String
     let price: String
@@ -16,7 +16,12 @@ struct Advertisement: Hashable {
     let createdDate: String
 
     enum CodingKeys: String, CodingKey {
+        case id, title, price, location
         case imageURL = "image_url"
-        case createdDate = "create_date"
+        case createdDate = "created_date"
     }
+}
+
+struct AdvertisementResponse: Codable {
+    let advertisements: [Advertisement]
 }
