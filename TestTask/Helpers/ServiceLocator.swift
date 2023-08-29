@@ -20,6 +20,7 @@ final class ServiceLocator: ServiceLocatorProtocol {
         self.assembler = Assembler(
             [
                 AdvertisementsServiceAssembly(),
+                AdvertisementServiceAssembly(),
             ],
             container: container
         )

@@ -9,7 +9,7 @@ import Swinject
 
 final class AdvertisementsServiceAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(AdvertisementsService.self) { resolver in
+        container.register(AdvertisementsServiceProtocol.self) { resolver in
             return AdvertisementsService()
         }
     }

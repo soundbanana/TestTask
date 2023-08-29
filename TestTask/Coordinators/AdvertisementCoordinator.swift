@@ -25,7 +25,9 @@ class AdvertisementCoordinator: AdvertisementCoordinatorProtocol {
         let viewController = AdvertisementViewController()
         let presenter = AdvertisementPresenter(
             view: viewController,
-            coordinator: self
+            coordinator: self,
+            service: resolver.resolve(),
+            itemId: "1"
         )
         viewController.presenter = presenter
         navigationController.pushViewController(viewController, animated: true)

@@ -31,6 +31,9 @@
 		FF9BFBF82A9E7B220015E41C /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFBF72A9E7B220015E41C /* ServiceLocator.swift */; };
 		FF9BFBFB2A9E7B680015E41C /* AdvertisementsServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFBFA2A9E7B680015E41C /* AdvertisementsServiceAssembly.swift */; };
 		FF9BFBFD2A9E81870015E41C /* Resolver + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFBFC2A9E81870015E41C /* Resolver + Extension.swift */; };
+		FF9BFBFF2A9E88090015E41C /* AdvertisementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFBFE2A9E88090015E41C /* AdvertisementService.swift */; };
+		FF9BFC012A9E894A0015E41C /* AdvertisementServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFC002A9E894A0015E41C /* AdvertisementServiceAssembly.swift */; };
+		FF9BFC032A9E8C0A0015E41C /* AdvertisementDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFC022A9E8C0A0015E41C /* AdvertisementDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		FF9BFBF72A9E7B220015E41C /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		FF9BFBFA2A9E7B680015E41C /* AdvertisementsServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementsServiceAssembly.swift; sourceTree = "<group>"; };
 		FF9BFBFC2A9E81870015E41C /* Resolver + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver + Extension.swift"; sourceTree = "<group>"; };
+		FF9BFBFE2A9E88090015E41C /* AdvertisementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementService.swift; sourceTree = "<group>"; };
+		FF9BFC002A9E894A0015E41C /* AdvertisementServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementServiceAssembly.swift; sourceTree = "<group>"; };
+		FF9BFC022A9E8C0A0015E41C /* AdvertisementDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				FF1004E82A9D122E0050F81B /* AdvertisementsService.swift */,
+				FF9BFBFE2A9E88090015E41C /* AdvertisementService.swift */,
 				FF1004EA2A9D19DF0050F81B /* NetworkError.swift */,
 			);
 			path = Service;
@@ -193,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				FF52BEF22A9A5C9F00E09E24 /* Advertisement.swift */,
+				FF9BFC022A9E8C0A0015E41C /* AdvertisementDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				FF9BFBFA2A9E7B680015E41C /* AdvertisementsServiceAssembly.swift */,
+				FF9BFC002A9E894A0015E41C /* AdvertisementServiceAssembly.swift */,
 			);
 			path = DependencyAssemblers;
 			sourceTree = "<group>";
@@ -334,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9BFBF82A9E7B220015E41C /* ServiceLocator.swift in Sources */,
+				FF9BFC032A9E8C0A0015E41C /* AdvertisementDetails.swift in Sources */,
 				FF1004E92A9D122E0050F81B /* AdvertisementsService.swift in Sources */,
 				FF9BFBE42A9E66730015E41C /* BaseCoordinatorProtocol.swift in Sources */,
 				FF52BEED2A9A56A100E09E24 /* AppCoordinator.swift in Sources */,
@@ -343,12 +353,14 @@
 				FF52BEF52A9A5EA900E09E24 /* CatalogPresenter.swift in Sources */,
 				FF52BED92A9A1FBD00E09E24 /* AppDelegate.swift in Sources */,
 				FF52BEEF2A9A56AA00E09E24 /* CatalogCoordinator.swift in Sources */,
+				FF9BFBFF2A9E88090015E41C /* AdvertisementService.swift in Sources */,
 				FF52BEDB2A9A1FBD00E09E24 /* SceneDelegate.swift in Sources */,
 				FF9BFBFD2A9E81870015E41C /* Resolver + Extension.swift in Sources */,
 				FF9BFBF22A9E721B0015E41C /* AdvertisementCoordinator.swift in Sources */,
 				FF1004EB2A9D19DF0050F81B /* NetworkError.swift in Sources */,
 				FF52BF022A9A7FEB00E09E24 /* CatalogCollectionViewCell.swift in Sources */,
 				FF9BFBF02A9E6CA50015E41C /* AdvertisementCoordinatorProtocol.swift in Sources */,
+				FF9BFC012A9E894A0015E41C /* AdvertisementServiceAssembly.swift in Sources */,
 				FF9BFBDF2A9E5EE20015E41C /* UIView + Extension.swift in Sources */,
 				FF9BFBEA2A9E6AC80015E41C /* AdvertisementPresenter.swift in Sources */,
 				FF52BEF32A9A5C9F00E09E24 /* Advertisement.swift in Sources */,

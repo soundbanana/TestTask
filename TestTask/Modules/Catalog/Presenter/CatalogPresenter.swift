@@ -19,11 +19,11 @@ protocol CatalogPresenterProtocol {
 class CatalogPresenter: CatalogPresenterProtocol {
     var view: CatalogViewProtocol?
     var coordinator: CatalogCoordinatorProtocol?
-    var service: AdvertisementsService
+    var service: AdvertisementsServiceProtocol
 
     private var dataSource: UICollectionViewDiffableDataSource<Int, Advertisement>!
 
-    required init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?, service: AdvertisementsService) {
+    required init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?, service: AdvertisementsServiceProtocol) {
         self.view = view
         self.coordinator = coordinator
         self.service = service
