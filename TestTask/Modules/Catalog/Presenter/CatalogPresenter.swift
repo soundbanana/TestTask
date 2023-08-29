@@ -1,5 +1,5 @@
 //
-//  MainPresenter.swift
+//  CatalogPresenter.swift
 //  TestTask
 //
 //  Created by Daniil Chemaev on 26.08.2023.
@@ -7,27 +7,27 @@
 
 import UIKit
 
-protocol AdvertisementsViewProtocol: AnyObject {
+protocol CatalogViewProtocol: AnyObject {
 }
 
-protocol AdvertisementsPresenterProtocol {
-    var view: AdvertisementsViewProtocol? { get set }
-    var coordinator: MainCoordinatorProtocol? { get set }
+protocol CatalogPresenterProtocol {
+    var view: CatalogViewProtocol? { get set }
+    var coordinator: CatalogCoordinatorProtocol? { get set }
 
-    init(view: AdvertisementsViewProtocol?, coordinator: MainCoordinatorProtocol?)
+    init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?)
 
     func configureDataSource(for collectionView: UICollectionView)
     func viewDidLoadEvent()
     func advertisementCellTapped(at indexPath: IndexPath)
 }
 
-class AdvertisementsPresenter: AdvertisementsPresenterProtocol {
-    var view: AdvertisementsViewProtocol?
-    var coordinator: MainCoordinatorProtocol?
+class CatalogPresenter: CatalogPresenterProtocol {
+    var view: CatalogViewProtocol?
+    var coordinator: CatalogCoordinatorProtocol?
 
     private var dataSource: UICollectionViewDiffableDataSource<Int, Advertisement>!
 
-    required init(view: AdvertisementsViewProtocol?, coordinator: MainCoordinatorProtocol?) {
+    required init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?) {
         self.view = view
         self.coordinator = coordinator
     }
@@ -53,13 +53,13 @@ class AdvertisementsPresenter: AdvertisementsPresenterProtocol {
 
     func configureDataSource(for collectionView: UICollectionView) {
         dataSource = UICollectionViewDiffableDataSource<Int, Advertisement>(collectionView: collectionView) { collectionView, indexPath, advertisement in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvertisementsCollectionViewCell.reuseIdentifier, for: indexPath) as? AdvertisementsCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatalogCollectionViewCell.reuseIdentifier, for: indexPath) as? CatalogCollectionViewCell else {
                 fatalError("Unable to dequeue CustomCollectionViewCell")
             }
             cell.configure(with: advertisement)
             return cell
         }
-        collectionView.register(AdvertisementsCollectionViewCell.self, forCellWithReuseIdentifier: AdvertisementsCollectionViewCell.reuseIdentifier)
+        collectionView.register(CatalogCollectionViewCell.self, forCellWithReuseIdentifier: CatalogCollectionViewCell.reuseIdentifier)
     }
 
     func advertisementCellTapped(at indexPath: IndexPath) {

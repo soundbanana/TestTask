@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CatalogViewController.swift
 //  TestTask
 //
 //  Created by Daniil Chemaev on 26.08.2023.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol {
-    var presenter: AdvertisementsPresenterProtocol!
+class CatalogViewController: UIViewController, CatalogViewProtocol {
+    var presenter: CatalogPresenterProtocol!
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
@@ -57,7 +57,7 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
     }
 }
 
-extension AdvertisementsViewController: UICollectionViewDelegate {
+extension CatalogViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.advertisementCellTapped(at: indexPath)
     }

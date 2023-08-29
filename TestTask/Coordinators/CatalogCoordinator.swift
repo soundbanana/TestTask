@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  CatalogCoordinator.swift
 //  TestTask
 //
 //  Created by Daniil Chemaev on 26.08.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainCoordinator: MainCoordinatorProtocol {
+class CatalogCoordinator: CatalogCoordinatorProtocol {
     var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -15,8 +15,8 @@ class MainCoordinator: MainCoordinatorProtocol {
     }
 
     func start() {
-        let viewController = AdvertisementsViewController()
-        viewController.presenter = AdvertisementsPresenter(view: viewController, coordinator: self)
+        let viewController = CatalogViewController()
+        viewController.presenter = CatalogPresenter(view: viewController, coordinator: self)
 
         navigationController.pushViewController(viewController, animated: false)
     }

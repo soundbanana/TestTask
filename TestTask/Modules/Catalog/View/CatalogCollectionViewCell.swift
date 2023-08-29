@@ -1,5 +1,5 @@
 //
-//  AdvertisementsCollectionViewCell.swift
+//  CatalogCollectionViewCell.swift
 //  TestTask
 //
 //  Created by Daniil Chemaev on 26.08.2023.
@@ -8,8 +8,8 @@
 import UIKit
 import Kingfisher
 
-class AdvertisementsCollectionViewCell: UICollectionViewCell {
-    static let reuseIdentifier = "AdvertisementsCollectionViewCell"
+class CatalogCollectionViewCell: UICollectionViewCell {
+    static let reuseIdentifier = "CatalogCollectionViewCell"
 
     private lazy var advertisementImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "person"))
