@@ -30,10 +30,11 @@ class CatalogCoordinator: CatalogCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: animated)
     }
 
-    func navigateToAdvertisementDetails(advertisement: Advertisement) {
+    func navigateToAdvertisementDetails(with id: String) {
         let coordinator = AdvertisementCoordinator(
             navigationController: navigationController,
-            resolver: resolver
+            resolver: resolver,
+            advertisementID: id
         ) {
             [weak self] in
             self?.childCoordinators.removeCoordinator(ofType: AdvertisementCoordinator.self)

@@ -21,20 +21,20 @@ class AdvertisementPresenter: AdvertisementPresenterProtocol {
     private var coordinator: AdvertisementCoordinatorProtocol?
     private var service: AdvertisementServiceProtocol
 
-    private let itemId: String
+    private let advertisementID: String
 
-    required init(view: AdvertisementViewProtocol?, coordinator: AdvertisementCoordinatorProtocol?, service: AdvertisementServiceProtocol, itemId: String) {
+    required init(view: AdvertisementViewProtocol?, coordinator: AdvertisementCoordinatorProtocol?, service: AdvertisementServiceProtocol, advertisementID: String) {
         self.view = view
         self.coordinator = coordinator
         self.service = service
-        self.itemId = itemId
+        self.advertisementID = advertisementID
         fetchAdvertisement()
     }
 
     private func fetchAdvertisement() {
         view?.showLoading()
 
-        service.fetchAdvertisement(itemId: itemId) { result in
+        service.fetchAdvertisement(advertisementID: advertisementID) { result in
             switch result {
             case .success(let advertisement):
                 DispatchQueue.main.async {

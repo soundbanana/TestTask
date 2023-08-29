@@ -15,9 +15,12 @@ class AdvertisementCoordinator: AdvertisementCoordinatorProtocol {
     private var childCoordinators: [BaseCoordinatorProtocol] = []
     private var finishHandlers: [(() -> Void)] = []
 
-    init(navigationController: UINavigationController, resolver: Resolver, finishHandler: @escaping (() -> Void)) {
+    private var advertisementID: String
+
+    init(navigationController: UINavigationController, resolver: Resolver, advertisementID: String, finishHandler: @escaping (() -> Void)) {
         self.navigationController = navigationController
         self.resolver = resolver
+        self.advertisementID = advertisementID
         finishHandlers.append(finishHandler)
     }
 
@@ -27,7 +30,7 @@ class AdvertisementCoordinator: AdvertisementCoordinatorProtocol {
             view: viewController,
             coordinator: self,
             service: resolver.resolve(),
-            itemId: "1"
+            advertisementID: advertisementID
         )
         viewController.presenter = presenter
         navigationController.pushViewController(viewController, animated: true)

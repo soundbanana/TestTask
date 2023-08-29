@@ -18,22 +18,30 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         return imageView
     }()
 
+    private lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var priceLabel: UILabel = {
+    private lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var locationLabel: UILabel = {
+    private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .gray
@@ -49,6 +57,14 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         return label
     }()
 
+    private lazy var descriptionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        label.text = "Описание"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
@@ -59,7 +75,7 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
 
     private lazy var emailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 26)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,14 +83,6 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
     private lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private lazy var addressLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -92,6 +100,7 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
             priceLabel,
             locationLabel,
             createdDateLabel,
+            descriptionTitleLabel,
             descriptionLabel,
             emailLabel,
             phoneNumberLabel,
@@ -108,36 +117,41 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
             advertisementImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             advertisementImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             advertisementImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            advertisementImageView.heightAnchor.constraint(equalToConstant: 350),
+            advertisementImageView.heightAnchor.constraint(equalToConstant: 300),
 
-            titleLabel.topAnchor.constraint(equalTo: advertisementImageView.bottomAnchor, constant: padding),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            priceLabel.topAnchor.constraint(equalTo: advertisementImageView.bottomAnchor, constant: padding / 2),
+            priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
 
-            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding / 2),
-            priceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: padding / 4),
+            titleLabel.leadingAnchor.constraint(equalTo: priceLabel.leadingAnchor),
 
-            locationLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: padding / 4),
-            locationLabel.leadingAnchor.constraint(equalTo: priceLabel.leadingAnchor),
+            locationLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding / 4),
+            locationLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 
-            createdDateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: padding / 4),
-            createdDateLabel.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
+            addressLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
+            addressLabel.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
+            addressLabel.trailingAnchor.constraint(equalTo: locationLabel.trailingAnchor),
 
-            descriptionLabel.topAnchor.constraint(equalTo: createdDateLabel.bottomAnchor, constant: padding),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            createdDateLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: padding / 4),
+            createdDateLabel.leadingAnchor.constraint(equalTo: addressLabel.leadingAnchor),
+            createdDateLabel.trailingAnchor.constraint(equalTo: addressLabel.trailingAnchor),
 
-            emailLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: padding),
-            emailLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            emailLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: createdDateLabel.bottomAnchor, constant: padding / 2),
+            descriptionTitleLabel.leadingAnchor.constraint(equalTo: createdDateLabel.leadingAnchor),
+            descriptionTitleLabel.trailingAnchor.constraint(equalTo: createdDateLabel.trailingAnchor),
+
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: padding / 4),
+            descriptionLabel.leadingAnchor.constraint(equalTo: descriptionTitleLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: descriptionTitleLabel.trailingAnchor),
+
+            emailLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: padding / 2),
+            emailLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
+            emailLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
 
             phoneNumberLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: padding / 4),
             phoneNumberLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),
-
-            addressLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: padding / 4),
-            addressLabel.leadingAnchor.constraint(equalTo: phoneNumberLabel.leadingAnchor),
-            addressLabel.trailingAnchor.constraint(equalTo: phoneNumberLabel.trailingAnchor),
-            addressLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
+            phoneNumberLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
     }
 

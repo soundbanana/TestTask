@@ -61,7 +61,7 @@ class CatalogPresenter: CatalogPresenterProtocol {
 
     func advertisementCellTapped(at indexPath: IndexPath) {
         if let selectedAdvertisement = dataSource.itemIdentifier(for: indexPath) {
-            coordinator?.navigateToAdvertisementDetails(advertisement: selectedAdvertisement)
+            coordinator?.navigateToAdvertisementDetails(with: selectedAdvertisement.id)
         }
     }
 }

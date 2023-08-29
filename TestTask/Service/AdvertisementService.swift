@@ -8,14 +8,14 @@
 import Foundation
 
 protocol AdvertisementServiceProtocol {
-    func fetchAdvertisement(itemId: String, completion: @escaping (Result<AdvertisementDetails, NetworkError>) -> Void)
+    func fetchAdvertisement(advertisementID: String, completion: @escaping (Result<AdvertisementDetails, NetworkError>) -> Void)
 }
 
 final class AdvertisementService: AdvertisementServiceProtocol {
     private let baseURL = "https://www.avito.st/s/interns-ios"
 
-    func fetchAdvertisement(itemId: String, completion: @escaping (Result<AdvertisementDetails, NetworkError>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/details/\(itemId).json") else {
+    func fetchAdvertisement(advertisementID: String, completion: @escaping (Result<AdvertisementDetails, NetworkError>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/details/\(advertisementID).json") else {
             completion(.failure(.invalidURL))
             return
         }
