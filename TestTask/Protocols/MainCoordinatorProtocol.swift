@@ -7,6 +7,7 @@
 
 import UIKit
 
-protocol CoordinatorProtocol {
+protocol MainCoordinatorProtocol: BaseCoordinatorProtocol {
     func start()
+    func navigateToAdvertisementDetails(advertisement: Advertisement)
 }

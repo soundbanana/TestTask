@@ -13,8 +13,8 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .lightGray
-        collectionView.register(AdvertisementsCollectionViewCell.self, forCellWithReuseIdentifier: AdvertisementsCollectionViewCell.reuseIdentifier)
+        collectionView.backgroundColor = .white
+        collectionView.delegate = self
         return collectionView
     }()
 
@@ -26,10 +26,8 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
     }
 
     private func setupViews() {
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         view.addSubview(collectionView)
-
-//        presenter.configureDataSource(for: collectionView)
 
         setupConstraints()
     }
@@ -44,7 +42,7 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
     }
 
     private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(270))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(300))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
 
@@ -56,5 +54,11 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
 
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
+    }
+}
+
+extension AdvertisementsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.advertisementCellTapped(at: indexPath)
     }
 }

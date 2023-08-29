@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainCoordinator: CoordinatorProtocol {
+class MainCoordinator: MainCoordinatorProtocol {
     var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -16,13 +16,12 @@ class MainCoordinator: CoordinatorProtocol {
 
     func start() {
         let viewController = AdvertisementsViewController()
-        
         viewController.presenter = AdvertisementsPresenter(view: viewController, coordinator: self)
 
         navigationController.pushViewController(viewController, animated: false)
     }
 
-    func showDetails(with advertisement: Advertisement){
+    func navigateToAdvertisementDetails(advertisement: Advertisement) {
         print("Showing \(advertisement.title) details view")
     }
 }

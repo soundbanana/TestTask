@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppCoordinator: CoordinatorProtocol {
+class AppCoordinator {
     
     private var window: UIWindow
 
