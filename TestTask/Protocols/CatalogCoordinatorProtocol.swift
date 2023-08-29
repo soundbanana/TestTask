@@ -8,6 +8,5 @@
 import UIKit
 
 protocol CatalogCoordinatorProtocol: BaseCoordinatorProtocol {
-    func start()
     func navigateToAdvertisementDetails(advertisement: Advertisement)
 }

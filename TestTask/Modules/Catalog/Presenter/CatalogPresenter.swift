@@ -11,11 +11,6 @@ protocol CatalogViewProtocol: AnyObject {
 }
 
 protocol CatalogPresenterProtocol {
-    var view: CatalogViewProtocol? { get set }
-    var coordinator: CatalogCoordinatorProtocol? { get set }
-
-    init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?)
-
     func configureDataSource(for collectionView: UICollectionView)
     func viewDidLoadEvent()
     func advertisementCellTapped(at indexPath: IndexPath)
@@ -24,16 +19,18 @@ protocol CatalogPresenterProtocol {
 class CatalogPresenter: CatalogPresenterProtocol {
     var view: CatalogViewProtocol?
     var coordinator: CatalogCoordinatorProtocol?
+    var service: AdvertisementsService
 
     private var dataSource: UICollectionViewDiffableDataSource<Int, Advertisement>!
 
-    required init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?) {
+    required init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?, service: AdvertisementsService) {
         self.view = view
         self.coordinator = coordinator
+        self.service = service
     }
 
     private func fetchAdvertisements() {
-        AdvertisementsService().fetchAdvertisements { [weak self] result in
+        service.fetchAdvertisements { [weak self] result in
             switch result {
             case .success(let response):
                 var snapshot = NSDiffableDataSourceSnapshot<Int, Advertisement>()
