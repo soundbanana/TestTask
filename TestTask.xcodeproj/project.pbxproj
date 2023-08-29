@@ -7,21 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1004E92A9D122E0050F81B /* AdvertisementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1004E82A9D122E0050F81B /* AdvertisementsService.swift */; };
+		FF1004EB2A9D19DF0050F81B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1004EA2A9D19DF0050F81B /* NetworkError.swift */; };
 		FF52BED92A9A1FBD00E09E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BED82A9A1FBD00E09E24 /* AppDelegate.swift */; };
 		FF52BEDB2A9A1FBD00E09E24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEDA2A9A1FBD00E09E24 /* SceneDelegate.swift */; };
-		FF52BEDD2A9A1FBD00E09E24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEDC2A9A1FBD00E09E24 /* ViewController.swift */; };
+		FF52BEDD2A9A1FBD00E09E24 /* AdvertisementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEDC2A9A1FBD00E09E24 /* AdvertisementsViewController.swift */; };
 		FF52BEE22A9A1FBE00E09E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF52BEE12A9A1FBE00E09E24 /* Assets.xcassets */; };
 		FF52BEE52A9A1FBE00E09E24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF52BEE32A9A1FBE00E09E24 /* LaunchScreen.storyboard */; };
+		FF52BEED2A9A56A100E09E24 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEEC2A9A56A100E09E24 /* AppCoordinator.swift */; };
+		FF52BEEF2A9A56AA00E09E24 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEEE2A9A56AA00E09E24 /* MainCoordinator.swift */; };
+		FF52BEF12A9A56C100E09E24 /* MainCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEF02A9A56C100E09E24 /* MainCoordinatorProtocol.swift */; };
+		FF52BEF32A9A5C9F00E09E24 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEF22A9A5C9F00E09E24 /* Advertisement.swift */; };
+		FF52BEF52A9A5EA900E09E24 /* AdvertisementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BEF42A9A5EA900E09E24 /* AdvertisementsPresenter.swift */; };
+		FF52BF022A9A7FEB00E09E24 /* AdvertisementsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF52BF012A9A7FEB00E09E24 /* AdvertisementsCollectionViewCell.swift */; };
+		FF9BFBDF2A9E5EE20015E41C /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFBDE2A9E5EE20015E41C /* UIView + Extension.swift */; };
+		FF9BFBE22A9E60950015E41C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FF9BFBE12A9E60950015E41C /* Kingfisher */; };
+		FF9BFBE42A9E66730015E41C /* BaseCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFBE32A9E66730015E41C /* BaseCoordinatorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF1004E82A9D122E0050F81B /* AdvertisementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementsService.swift; sourceTree = "<group>"; };
+		FF1004EA2A9D19DF0050F81B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FF52BED52A9A1FBD00E09E24 /* TestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF52BED82A9A1FBD00E09E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF52BEDA2A9A1FBD00E09E24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF52BEDC2A9A1FBD00E09E24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF52BEDC2A9A1FBD00E09E24 /* AdvertisementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementsViewController.swift; sourceTree = "<group>"; };
 		FF52BEE12A9A1FBE00E09E24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF52BEE42A9A1FBE00E09E24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF52BEE62A9A1FBE00E09E24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF52BEEC2A9A56A100E09E24 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FF52BEEE2A9A56AA00E09E24 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		FF52BEF02A9A56C100E09E24 /* MainCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		FF52BEF22A9A5C9F00E09E24 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
+		FF52BEF42A9A5EA900E09E24 /* AdvertisementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementsPresenter.swift; sourceTree = "<group>"; };
+		FF52BF012A9A7FEB00E09E24 /* AdvertisementsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FF9BFBDE2A9E5EE20015E41C /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		FF9BFBE32A9E66730015E41C /* BaseCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinatorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,12 +50,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF9BFBE22A9E60950015E41C /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF1004E72A9D11DB0050F81B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FF1004E82A9D122E0050F81B /* AdvertisementsService.swift */,
+				FF1004EA2A9D19DF0050F81B /* NetworkError.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FF1004F02A9D1FFF0050F81B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BED82A9A1FBD00E09E24 /* AppDelegate.swift */,
+				FF52BEDA2A9A1FBD00E09E24 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		FF1004F12A9D20CF0050F81B /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEE12A9A1FBE00E09E24 /* Assets.xcassets */,
+				FF52BEE62A9A1FBE00E09E24 /* Info.plist */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		FF52BECC2A9A1FBD00E09E24 = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +103,93 @@
 		FF52BED72A9A1FBD00E09E24 /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
-				FF52BED82A9A1FBD00E09E24 /* AppDelegate.swift */,
-				FF52BEDA2A9A1FBD00E09E24 /* SceneDelegate.swift */,
-				FF52BEDC2A9A1FBD00E09E24 /* ViewController.swift */,
-				FF52BEE12A9A1FBE00E09E24 /* Assets.xcassets */,
-				FF52BEE32A9A1FBE00E09E24 /* LaunchScreen.storyboard */,
-				FF52BEE62A9A1FBE00E09E24 /* Info.plist */,
+				FF9BFBDD2A9E5EB40015E41C /* Extension */,
+				FF1004F02A9D1FFF0050F81B /* Application */,
+				FF52BEFB2A9A645B00E09E24 /* Coordinators */,
+				FF52BEFF2A9A64D300E09E24 /* Models */,
+				FF52BEF82A9A642100E09E24 /* Modules */,
+				FF52BEFC2A9A647500E09E24 /* Protocols */,
+				FF1004F12A9D20CF0050F81B /* Resourses */,
+				FF1004E72A9D11DB0050F81B /* Service */,
+				FF52BF002A9A650D00E09E24 /* Storyboards */,
 			);
 			path = TestTask;
+			sourceTree = "<group>";
+		};
+		FF52BEF82A9A642100E09E24 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEF92A9A642F00E09E24 /* Advertisements */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		FF52BEF92A9A642F00E09E24 /* Advertisements */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEFE2A9A64A000E09E24 /* Presenter */,
+				FF52BEFD2A9A649700E09E24 /* View */,
+			);
+			path = Advertisements;
+			sourceTree = "<group>";
+		};
+		FF52BEFB2A9A645B00E09E24 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEEC2A9A56A100E09E24 /* AppCoordinator.swift */,
+				FF52BEEE2A9A56AA00E09E24 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		FF52BEFC2A9A647500E09E24 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEF02A9A56C100E09E24 /* MainCoordinatorProtocol.swift */,
+				FF9BFBE32A9E66730015E41C /* BaseCoordinatorProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FF52BEFD2A9A649700E09E24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BF012A9A7FEB00E09E24 /* AdvertisementsCollectionViewCell.swift */,
+				FF52BEDC2A9A1FBD00E09E24 /* AdvertisementsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF52BEFE2A9A64A000E09E24 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEF42A9A5EA900E09E24 /* AdvertisementsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FF52BEFF2A9A64D300E09E24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEF22A9A5C9F00E09E24 /* Advertisement.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FF52BF002A9A650D00E09E24 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FF52BEE32A9A1FBE00E09E24 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FF9BFBDD2A9E5EB40015E41C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FF9BFBDE2A9E5EE20015E41C /* UIView + Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +208,9 @@
 			dependencies = (
 			);
 			name = TestTask;
+			packageProductDependencies = (
+				FF9BFBE12A9E60950015E41C /* Kingfisher */,
+			);
 			productName = TestTask;
 			productReference = FF52BED52A9A1FBD00E09E24 /* TestTask.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +239,9 @@
 				Base,
 			);
 			mainGroup = FF52BECC2A9A1FBD00E09E24;
+			packageReferences = (
+				FF9BFBE02A9E60950015E41C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = FF52BED62A9A1FBD00E09E24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,9 +268,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF52BEDD2A9A1FBD00E09E24 /* ViewController.swift in Sources */,
+				FF1004E92A9D122E0050F81B /* AdvertisementsService.swift in Sources */,
+				FF9BFBE42A9E66730015E41C /* BaseCoordinatorProtocol.swift in Sources */,
+				FF52BEED2A9A56A100E09E24 /* AppCoordinator.swift in Sources */,
+				FF52BEDD2A9A1FBD00E09E24 /* AdvertisementsViewController.swift in Sources */,
+				FF52BEF12A9A56C100E09E24 /* MainCoordinatorProtocol.swift in Sources */,
+				FF52BEF52A9A5EA900E09E24 /* AdvertisementsPresenter.swift in Sources */,
 				FF52BED92A9A1FBD00E09E24 /* AppDelegate.swift in Sources */,
+				FF52BEEF2A9A56AA00E09E24 /* MainCoordinator.swift in Sources */,
 				FF52BEDB2A9A1FBD00E09E24 /* SceneDelegate.swift in Sources */,
+				FF1004EB2A9D19DF0050F81B /* NetworkError.swift in Sources */,
+				FF52BF022A9A7FEB00E09E24 /* AdvertisementsCollectionViewCell.swift in Sources */,
+				FF9BFBDF2A9E5EE20015E41C /* UIView + Extension.swift in Sources */,
+				FF52BEF32A9A5C9F00E09E24 /* Advertisement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +421,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KTNM35TF3W;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTask/Info.plist;
+				INFOPLIST_FILE = TestTask/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -308,7 +452,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KTNM35TF3W;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTask/Info.plist;
+				INFOPLIST_FILE = TestTask/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -352,6 +496,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FF9BFBE02A9E60950015E41C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FF9BFBE12A9E60950015E41C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF9BFBE02A9E60950015E41C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FF52BECD2A9A1FBD00E09E24 /* Project object */;
 }
