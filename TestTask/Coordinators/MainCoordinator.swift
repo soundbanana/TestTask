@@ -22,7 +22,7 @@ class MainCoordinator: CoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: false)
     }
 
-    func showDetails(for advertisement: Advertisement){
+    func showDetails(with advertisement: Advertisement){
         print("Showing \(advertisement.title) details view")
     }
 }

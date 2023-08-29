@@ -14,8 +14,6 @@ protocol AdvertisementsPresenterProtocol {
     var view: AdvertisementsViewProtocol? { get set }
     var coordinator: CoordinatorProtocol? { get set }
 
-    //    var numberOfAdvertisements: Int { get }
-
     init(view: AdvertisementsViewProtocol?, coordinator: CoordinatorProtocol?)
 
     func configureDataSource(for collectionView: UICollectionView)
@@ -34,14 +32,14 @@ class AdvertisementsPresenter: AdvertisementsPresenterProtocol {
     }
 
     private func fetchAdvertisements() {
-        AdvertisementsService().fetchAdvertisements { result in
+        AdvertisementsService().fetchAdvertisements { [weak self] result in
             switch result {
             case .success(let response):
                 print(response)
                 var snapshot = NSDiffableDataSourceSnapshot<Int, Advertisement>()
                 snapshot.appendSections([0])
                 snapshot.appendItems(response.advertisements)
-//                self.view?.applySnapshot(snapshot)
+                self?.dataSource.apply(snapshot, animatingDifferences: true)
 
             case .failure(let error):
                 print("Error fetching advertisements: \(error.localizedDescription)")
@@ -52,18 +50,8 @@ class AdvertisementsPresenter: AdvertisementsPresenterProtocol {
     func viewDidLoadEvent() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Advertisement>()
         snapshot.appendSections([0])
-        snapshot.appendItems([
-            Advertisement(id: "1", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "2", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "3", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "4", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "5", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "6", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "7", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "8", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "9", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123"),
-            Advertisement(id: "10", title: "1", price: "2", location: "2", imageURL: "123", createdDate: "123")
-        ])
+
+        snapshot.appendItems([])
 
         dataSource.apply(snapshot, animatingDifferences: true)
 
@@ -75,6 +63,7 @@ class AdvertisementsPresenter: AdvertisementsPresenterProtocol {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvertisementsCollectionViewCell.reuseIdentifier, for: indexPath) as? AdvertisementsCollectionViewCell else {
                 fatalError("Unable to dequeue CustomCollectionViewCell")
             }
+            cell.configure(with: advertisement) // Pass the advertisement data to the cell's configure method
             return cell
         }
     }

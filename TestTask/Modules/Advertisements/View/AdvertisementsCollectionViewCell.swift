@@ -11,18 +11,20 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "AdvertisementsCollectionViewCell"
 
     private lazy var advertisementImage: UIImageView = {
-        let imageView = UIImageView()
+        let imageView = UIImageView(image: UIImage(systemName: "person"))
         imageView.layer.cornerRadius = 6
-        imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private lazy var nameLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = .label
         label.numberOfLines = 2
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -31,48 +33,80 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.textColor = .label
         label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var placeLabel: UILabel = {
+    private lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .black
         label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var publishedAtLabel: UILabel = {
+    private lazy var createdDateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .black
         label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var favoriteButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
 
-    private lazy var optionButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupUI()
+    }
 
-    private lazy var actionStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 4
-        return stack
-    }()
+    private func setupUI() {
+        contentView.backgroundColor = .red
+        contentView.addSubview(advertisementImage)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(priceLabel)
+        contentView.addSubview(locationLabel)
+        contentView.addSubview(createdDateLabel)
 
-//    func configure(with advertisement: AdvertisementPreview) {
-//        self.advertisement = advertisement
-//
-//        nameLabel.text = advertisement.title
-//        placeLabel.text = advertisement.location
-//        priceLabel.text = advertisement.price
-//    }
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            advertisementImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            advertisementImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            advertisementImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            advertisementImage.heightAnchor.constraint(equalToConstant: 150),
+            advertisementImage.widthAnchor.constraint(equalToConstant: 150),
+
+            titleLabel.topAnchor.constraint(equalTo: advertisementImage.bottomAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+
+            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            priceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            priceLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+
+            locationLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
+            locationLabel.leadingAnchor.constraint(equalTo: priceLabel.leadingAnchor),
+            locationLabel.trailingAnchor.constraint(equalTo: priceLabel.trailingAnchor),
+
+            createdDateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
+            createdDateLabel.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
+            createdDateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+        ])
+    }
+
+    func configure(with item: Advertisement) {
+        titleLabel.text = item.title
+        priceLabel.text = item.price
+        locationLabel.text = item.location
+        createdDateLabel.text = item.createdDate
+    }
 }
 
