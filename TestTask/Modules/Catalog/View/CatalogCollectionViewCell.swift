@@ -23,7 +23,6 @@ class CatalogCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .black
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,7 +31,6 @@ class CatalogCollectionViewCell: UICollectionViewCell {
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .black
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -67,7 +65,7 @@ class CatalogCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupUI() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         contentView.addSubviews(advertisementImage, titleLabel, priceLabel, locationLabel, createdDateLabel)
         setupConstraints()
     }

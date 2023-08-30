@@ -34,6 +34,7 @@
 		FF9BFBFF2A9E88090015E41C /* AdvertisementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFBFE2A9E88090015E41C /* AdvertisementService.swift */; };
 		FF9BFC012A9E894A0015E41C /* AdvertisementServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFC002A9E894A0015E41C /* AdvertisementServiceAssembly.swift */; };
 		FF9BFC032A9E8C0A0015E41C /* AdvertisementDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BFC022A9E8C0A0015E41C /* AdvertisementDetails.swift */; };
+		FFB323AC2A9F930100AAD8B5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB323AB2A9F930100AAD8B5 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		FF9BFBFE2A9E88090015E41C /* AdvertisementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementService.swift; sourceTree = "<group>"; };
 		FF9BFC002A9E894A0015E41C /* AdvertisementServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementServiceAssembly.swift; sourceTree = "<group>"; };
 		FF9BFC022A9E8C0A0015E41C /* AdvertisementDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementDetails.swift; sourceTree = "<group>"; };
+		FFB323AB2A9F930100AAD8B5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				FF52BEF92A9A642F00E09E24 /* Catalog */,
 				FF9BFBE62A9E68100015E41C /* Advertisement */,
+				FFB323AB2A9F930100AAD8B5 /* ErrorView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				FF52BEED2A9A56A100E09E24 /* AppCoordinator.swift in Sources */,
 				FF52BEDD2A9A1FBD00E09E24 /* CatalogViewController.swift in Sources */,
 				FF9BFBFB2A9E7B680015E41C /* AdvertisementsServiceAssembly.swift in Sources */,
+				FFB323AC2A9F930100AAD8B5 /* ErrorView.swift in Sources */,
 				FF52BEF12A9A56C100E09E24 /* CatalogCoordinatorProtocol.swift in Sources */,
 				FF52BEF52A9A5EA900E09E24 /* CatalogPresenter.swift in Sources */,
 				FF52BED92A9A1FBD00E09E24 /* AppDelegate.swift in Sources */,

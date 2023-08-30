@@ -9,11 +9,13 @@ import Foundation
 
 protocol AdvertisementViewProtocol: AnyObject {
     func showLoading()
+    func hideLoading()
     func showContent(_ advertisement: AdvertisementDetails)
     func showError(_ error: String)
 }
 
 protocol AdvertisementPresenterProtocol {
+    func fetchAdvertisement()
 }
 
 class AdvertisementPresenter: AdvertisementPresenterProtocol {
@@ -31,18 +33,18 @@ class AdvertisementPresenter: AdvertisementPresenterProtocol {
         fetchAdvertisement()
     }
 
-    private func fetchAdvertisement() {
+    func fetchAdvertisement() {
         view?.showLoading()
 
-        service.fetchAdvertisement(advertisementID: advertisementID) { result in
+        service.fetchAdvertisement(advertisementID: advertisementID) { [weak self] result in
             switch result {
             case .success(let advertisement):
                 DispatchQueue.main.async {
-                    self.view?.showContent(advertisement)
+                    self?.view?.showContent(advertisement)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.view?.showError("Error fetching advertisement: \(error.localizedDescription)")
+                    self?.view?.showError("Error fetching advertisement: \(error.localizedDescription)")
                 }
             }
         }

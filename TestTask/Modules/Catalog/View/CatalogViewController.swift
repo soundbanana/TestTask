@@ -13,7 +13,7 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         return collectionView
     }()
@@ -26,7 +26,7 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
     }
 
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
 
         setupConstraints()

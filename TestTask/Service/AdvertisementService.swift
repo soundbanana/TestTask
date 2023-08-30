@@ -43,7 +43,6 @@ final class AdvertisementService: AdvertisementServiceProtocol {
 
             do {
                 let result = try JSONDecoder().decode(AdvertisementDetails.self, from: data)
-                print(result)
                 completion(.success(result))
             } catch {
                 completion(.failure(.decodingFailed))
