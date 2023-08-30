@@ -11,6 +11,18 @@ import Kingfisher
 class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
     var presenter: AdvertisementPresenterProtocol!
 
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var advertisementImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -90,11 +102,30 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        setupScrollView()
         setupViews()
     }
 
+    private func setupScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+
     private func setupViews() {
-        view.addSubviews(
+        contentView.addSubviews(
             advertisementImageView,
             titleLabel,
             priceLabel,
@@ -114,44 +145,47 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         let padding: CGFloat = 16.0
 
         NSLayoutConstraint.activate([
-            advertisementImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            advertisementImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            advertisementImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            advertisementImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: padding),
+            advertisementImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            advertisementImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             advertisementImageView.heightAnchor.constraint(equalToConstant: 300),
 
             priceLabel.topAnchor.constraint(equalTo: advertisementImageView.bottomAnchor, constant: padding / 2),
-            priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             titleLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: padding / 4),
-            titleLabel.leadingAnchor.constraint(equalTo: priceLabel.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             locationLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding / 4),
-            locationLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            locationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            locationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
-            addressLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
-            addressLabel.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
-            addressLabel.trailingAnchor.constraint(equalTo: locationLabel.trailingAnchor),
+            addressLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: padding / 4),
+            addressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            addressLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             createdDateLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: padding / 4),
-            createdDateLabel.leadingAnchor.constraint(equalTo: addressLabel.leadingAnchor),
-            createdDateLabel.trailingAnchor.constraint(equalTo: addressLabel.trailingAnchor),
+            createdDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            createdDateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             descriptionTitleLabel.topAnchor.constraint(equalTo: createdDateLabel.bottomAnchor, constant: padding / 2),
-            descriptionTitleLabel.leadingAnchor.constraint(equalTo: createdDateLabel.leadingAnchor),
-            descriptionTitleLabel.trailingAnchor.constraint(equalTo: createdDateLabel.trailingAnchor),
+            descriptionTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            descriptionTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: padding / 4),
-            descriptionLabel.leadingAnchor.constraint(equalTo: descriptionTitleLabel.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: descriptionTitleLabel.trailingAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             emailLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: padding / 2),
-            emailLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
-            emailLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
+            emailLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            emailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             phoneNumberLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: padding / 4),
-            phoneNumberLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),
-            phoneNumberLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
+            phoneNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            phoneNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            phoneNumberLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
     }
 
