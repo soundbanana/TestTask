@@ -1,5 +1,5 @@
 //
-//  AdvertisementsCollectionViewCell.swift
+//  CatalogCollectionViewCell.swift
 //  TestTask
 //
 //  Created by Daniil Chemaev on 26.08.2023.
@@ -8,8 +8,10 @@
 import UIKit
 import Kingfisher
 
-class AdvertisementsCollectionViewCell: UICollectionViewCell {
-    static let reuseIdentifier = "AdvertisementsCollectionViewCell"
+class CatalogCollectionViewCell: UICollectionViewCell {
+    static let reuseIdentifier = "CatalogCollectionViewCell"
+
+    // MARK: - UI Elements
 
     private lazy var advertisementImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "person"))
@@ -23,7 +25,6 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .black
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,7 +33,6 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .black
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -56,6 +56,8 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -66,8 +68,10 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
 
+    // MARK: - UI Setup
+
     private func setupUI() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         contentView.addSubviews(advertisementImage, titleLabel, priceLabel, locationLabel, createdDateLabel)
         setupConstraints()
     }
@@ -97,6 +101,8 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
         ])
     }
 
+    // MARK: - Configuration
+
     func configure(with advertisement: Advertisement) {
         titleLabel.text = advertisement.title
         priceLabel.text = advertisement.price
@@ -107,4 +113,3 @@ class AdvertisementsCollectionViewCell: UICollectionViewCell {
         advertisementImage.kf.setImage(with: url)
     }
 }
-

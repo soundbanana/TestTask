@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CatalogViewController.swift
 //  TestTask
 //
 //  Created by Daniil Chemaev on 26.08.2023.
@@ -7,16 +7,20 @@
 
 import UIKit
 
-class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol {
-    var presenter: AdvertisementsPresenterProtocol!
+class CatalogViewController: UIViewController, CatalogViewProtocol {
+    var presenter: CatalogPresenterProtocol!
+
+    // MARK: - UI Elements
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         return collectionView
     }()
+
+    // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +29,11 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
         presenter.viewDidLoadEvent()
     }
 
-    private func setupViews() {
-        view.backgroundColor = .white
-        view.addSubview(collectionView)
+    // MARK: - UI Setup
 
+    private func setupViews() {
+        view.backgroundColor = .systemBackground
+        view.addSubview(collectionView)
         setupConstraints()
     }
 
@@ -40,6 +45,8 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+
+    // MARK: - UICollectionViewLayout
 
     private func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(300))
@@ -57,7 +64,9 @@ class AdvertisementsViewController: UIViewController, AdvertisementsViewProtocol
     }
 }
 
-extension AdvertisementsViewController: UICollectionViewDelegate {
+// MARK: - UICollectionViewDelegate
+
+extension CatalogViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.advertisementCellTapped(at: indexPath)
     }

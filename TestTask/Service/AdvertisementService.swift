@@ -1,25 +1,25 @@
 //
-//  NetworkService.swift
+//  AdvertisementService.swift
 //  TestTask
 //
-//  Created by Daniil Chemaev on 28.08.2023.
+//  Created by Daniil Chemaev on 29.08.2023.
 //
 
 import Foundation
 
-// Protocol defining the interface for fetching advertisements data.
-protocol AdvertisementsServiceProtocol {
-    func fetchAdvertisements(completion: @escaping (Result<AdvertisementResponse, NetworkError>) -> Void)
+// Protocol defining the interface for fetching advertisement details.
+protocol AdvertisementServiceProtocol {
+    func fetchAdvertisement(advertisementID: String, completion: @escaping (Result<AdvertisementDetails, NetworkError>) -> Void)
 }
 
-// Service class responsible for fetching advertisements data from the server.
-final class AdvertisementsService: AdvertisementsServiceProtocol {
+// Service class responsible for fetching advertisement details from the server.
+final class AdvertisementService: AdvertisementServiceProtocol {
     private let baseURL = "https://www.avito.st/s/interns-ios"
 
-    // Fetches advertisements from the server.
-    func fetchAdvertisements(completion: @escaping (Result<AdvertisementResponse, NetworkError>) -> Void) {
-        // Construct the URL for fetching advertisements.
-        guard let url = URL(string: "\(baseURL)/main-page.json") else {
+    // Fetches advertisement details from the server.
+    func fetchAdvertisement(advertisementID: String, completion: @escaping (Result<AdvertisementDetails, NetworkError>) -> Void) {
+        // Construct the URL for fetching advertisement details.
+        guard let url = URL(string: "\(baseURL)/details/\(advertisementID).json") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -51,7 +51,7 @@ final class AdvertisementsService: AdvertisementsServiceProtocol {
 
             // Attempt to decode the fetched data.
             do {
-                let result = try JSONDecoder().decode(AdvertisementResponse.self, from: data)
+                let result = try JSONDecoder().decode(AdvertisementDetails.self, from: data)
                 completion(.success(result))
             } catch {
                 completion(.failure(.decodingFailed))
