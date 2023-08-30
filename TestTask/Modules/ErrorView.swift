@@ -7,6 +7,7 @@
 
 import UIKit
 
+// A custom view to display error messages and provide a retry button.
 class ErrorView: UIView {
 
     private lazy var messageLabel: UILabel = {
@@ -30,6 +31,7 @@ class ErrorView: UIView {
         return button
     }()
 
+    // A closure that will be called when the retry button is tapped.
     var onRetryButtonTapped: (() -> Void)?
 
     override init(frame: CGRect) {
@@ -64,6 +66,7 @@ class ErrorView: UIView {
         onRetryButtonTapped?()
     }
 
+    // Configures the view with an error message.
     func configure(message: String) {
         messageLabel.text = message
     }

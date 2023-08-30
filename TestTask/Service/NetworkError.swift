@@ -7,13 +7,15 @@
 
 import Foundation
 
+// Enum defining various network-related errors that can occur during network operations.
 enum NetworkError: Error {
-    case invalidURL
-    case noData
-    case decodingFailed
-    case serverError(statusCode: Int)
-    case requestFailed(Error)
+    case invalidURL             // Invalid URL error.
+    case noData                 // No data received error.
+    case decodingFailed         // Decoding data failed error.
+    case serverError(statusCode: Int) // Server error with a specific status code.
+    case requestFailed(Error)   // Request failed error.
 
+    // Computed property that provides a localized description for each error case.
     var localizedDescription: String {
         switch self {
         case .invalidURL:
@@ -29,3 +31,4 @@ enum NetworkError: Error {
         }
     }
 }
+

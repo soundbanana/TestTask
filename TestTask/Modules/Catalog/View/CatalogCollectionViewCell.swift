@@ -11,6 +11,8 @@ import Kingfisher
 class CatalogCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "CatalogCollectionViewCell"
 
+    // MARK: - UI Elements
+
     private lazy var advertisementImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "person"))
         imageView.layer.cornerRadius = 6
@@ -54,6 +56,8 @@ class CatalogCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -63,6 +67,8 @@ class CatalogCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setupUI()
     }
+
+    // MARK: - UI Setup
 
     private func setupUI() {
         contentView.backgroundColor = .systemBackground
@@ -95,6 +101,8 @@ class CatalogCollectionViewCell: UICollectionViewCell {
         ])
     }
 
+    // MARK: - Configuration
+
     func configure(with advertisement: Advertisement) {
         titleLabel.text = advertisement.title
         priceLabel.text = advertisement.price
@@ -105,4 +113,3 @@ class CatalogCollectionViewCell: UICollectionViewCell {
         advertisementImage.kf.setImage(with: url)
     }
 }
-

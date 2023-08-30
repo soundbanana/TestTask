@@ -7,8 +7,11 @@
 
 import UIKit
 
-protocol CatalogViewProtocol: AnyObject {
-}
+// MARK: - CatalogViewProtocol
+
+protocol CatalogViewProtocol: AnyObject {}
+
+// MARK: - CatalogPresenterProtocol
 
 protocol CatalogPresenterProtocol {
     func configureDataSource(for collectionView: UICollectionView)
@@ -17,17 +20,23 @@ protocol CatalogPresenterProtocol {
 }
 
 class CatalogPresenter: CatalogPresenterProtocol {
+    // MARK: Properties
+
     var view: CatalogViewProtocol?
     var coordinator: CatalogCoordinatorProtocol?
     var service: AdvertisementsServiceProtocol
 
     private var dataSource: UICollectionViewDiffableDataSource<Int, Advertisement>!
 
+    // MARK: Initialization
+
     required init(view: CatalogViewProtocol?, coordinator: CatalogCoordinatorProtocol?, service: AdvertisementsServiceProtocol) {
         self.view = view
         self.coordinator = coordinator
         self.service = service
     }
+
+    // MARK: Private Methods
 
     private func fetchAdvertisements() {
         service.fetchAdvertisements { [weak self] result in
@@ -43,6 +52,8 @@ class CatalogPresenter: CatalogPresenterProtocol {
             }
         }
     }
+
+    // MARK: Public Methods
 
     func viewDidLoadEvent() {
         fetchAdvertisements()

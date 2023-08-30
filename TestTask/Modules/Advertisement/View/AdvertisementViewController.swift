@@ -9,7 +9,11 @@ import UIKit
 import Kingfisher
 
 class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
+    // MARK: - Properties
+
     var presenter: AdvertisementPresenterProtocol!
+
+    // MARK: - UI Elements
 
     private lazy var errorView: ErrorView = {
         let view = ErrorView()
@@ -112,6 +116,8 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         return label
     }()
 
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -136,6 +142,8 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
+
+    // MARK: - UI Setup
 
     private func setupViews() {
         contentView.addSubviews(
@@ -201,6 +209,8 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
             createdDateLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
     }
+
+    // MARK: - AdvertisementViewProtocol
 
     func showLoading() {
         loadingSpinner = UIActivityIndicatorView(style: .large)

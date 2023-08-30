@@ -10,6 +10,8 @@ import UIKit
 class CatalogViewController: UIViewController, CatalogViewProtocol {
     var presenter: CatalogPresenterProtocol!
 
+    // MARK: - UI Elements
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -18,6 +20,8 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
         return collectionView
     }()
 
+    // MARK: - Lifecycle Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -25,10 +29,11 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
         presenter.viewDidLoadEvent()
     }
 
+    // MARK: - UI Setup
+
     private func setupViews() {
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
-
         setupConstraints()
     }
 
@@ -40,6 +45,8 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+
+    // MARK: - UICollectionViewLayout
 
     private func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(300))
@@ -56,6 +63,8 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
         return layout
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension CatalogViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

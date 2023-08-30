@@ -7,23 +7,32 @@
 
 import Foundation
 
+// MARK: - AdvertisementViewProtocol
+
 protocol AdvertisementViewProtocol: AnyObject {
     func showLoading()
     func hideLoading()
     func showContent(_ advertisement: AdvertisementDetails)
     func showError(_ error: String)
+    func hideError()
 }
+
+// MARK: - AdvertisementPresenterProtocol
 
 protocol AdvertisementPresenterProtocol {
     func fetchAdvertisement()
 }
 
 class AdvertisementPresenter: AdvertisementPresenterProtocol {
+    // MARK: - Properties
+
     private var view: AdvertisementViewProtocol?
     private var coordinator: AdvertisementCoordinatorProtocol?
     private var service: AdvertisementServiceProtocol
 
     private let advertisementID: String
+
+    // MARK: - Initialization
 
     required init(view: AdvertisementViewProtocol?, coordinator: AdvertisementCoordinatorProtocol?, service: AdvertisementServiceProtocol, advertisementID: String) {
         self.view = view
@@ -32,6 +41,8 @@ class AdvertisementPresenter: AdvertisementPresenterProtocol {
         self.advertisementID = advertisementID
         fetchAdvertisement()
     }
+
+    // MARK: - Fetch Advertisement
 
     func fetchAdvertisement() {
         view?.showLoading()

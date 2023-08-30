@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - AdvertisementDetails Struct
+
 struct AdvertisementDetails: Codable {
     let id: String
     let title: String
@@ -19,6 +21,7 @@ struct AdvertisementDetails: Codable {
     let phoneNumber: String
     let address: String
 
+    // CodingKeys to map JSON keys to struct properties
     enum CodingKeys: String, CodingKey {
         case id, title, price, location, description, email, address
         case imageURL = "image_url"
