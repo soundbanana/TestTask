@@ -47,6 +47,7 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
     // MARK: - UI Setup
 
     private func setupViews() {
+        title = "Товары"
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
         setupConstraints()
