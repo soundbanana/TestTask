@@ -9,7 +9,25 @@ import UIKit
 
 // MARK: - CatalogViewProtocol
 
-protocol CatalogViewProtocol: AnyObject {}
+protocol CatalogViewProtocol: AnyObject {
+    // Show loading indicator
+    func showLoading()
+
+    // Hide loading indicator
+    func hideLoading()
+
+    // Show content (e.g., after successful data loading)
+    func showContent()
+
+    // Hide content (e.g., when an error is shown)
+    func hideContent()
+
+    // Show an error message
+    func showError(_ error: String)
+
+    // Hide the error message
+    func hideError()
+}
 
 // MARK: - CatalogPresenterProtocol
 
@@ -36,27 +54,37 @@ class CatalogPresenter: CatalogPresenterProtocol {
         self.service = service
     }
 
-    // MARK: Private Methods
+    // MARK: - CatalogPresenterProtocol
 
-    private func fetchAdvertisements() {
-        service.fetchAdvertisements { [weak self] result in
-            switch result {
+    func viewDidLoadEvent() {
+        DispatchQueue.main.async { [weak self] in
+            self?.view?.hideContent()
+            self?.view?.hideError()
+            self?.view?.showLoading()
+        }
+
+        fetchAdvertisements() { [weak self] status in
+            switch status {
             case .success(let response):
+                // If fetching was successful, update the UI with the fetched advertisements
                 var snapshot = NSDiffableDataSourceSnapshot<Int, Advertisement>()
                 snapshot.appendSections([0])
                 snapshot.appendItems(response.advertisements)
                 self?.dataSource.apply(snapshot, animatingDifferences: true)
+                DispatchQueue.main.async {
+                    self?.view?.hideLoading()
+                    self?.view?.hideError()
+                    self?.view?.showContent()
+                }
 
             case .failure(let error):
-                print("Error fetching advertisements: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self?.view?.hideLoading()
+                    self?.view?.hideContent()
+                    self?.view?.showError(error.localizedDescription)
+                }
             }
         }
-    }
-
-    // MARK: Public Methods
-
-    func viewDidLoadEvent() {
-        fetchAdvertisements()
     }
 
     func configureDataSource(for collectionView: UICollectionView) {
@@ -71,8 +99,28 @@ class CatalogPresenter: CatalogPresenterProtocol {
     }
 
     func advertisementCellTapped(at indexPath: IndexPath) {
-        if let selectedAdvertisement = dataSource.itemIdentifier(for: indexPath) {
+        if let selectedAdvertisement = dataSource?.itemIdentifier(for: indexPath) {
             coordinator?.navigateToAdvertisementDetails(with: selectedAdvertisement.id)
         }
     }
+
+    // MARK: Private Methods
+
+    private func fetchAdvertisements(completion: @escaping (FetchingAdvertisementsResult) -> Void) {
+        service.fetchAdvertisements { result in
+            switch result {
+            case .success(let response):
+                completion(.success(value: response))
+
+            case .failure(let error):
+                print("Error fetching advertisements: \(error.localizedDescription)")
+                completion(.failure(error: error))
+            }
+        }
+    }
+}
+
+enum FetchingAdvertisementsResult {
+    case success(value: AdvertisementResponse)
+    case failure(error: Error)
 }

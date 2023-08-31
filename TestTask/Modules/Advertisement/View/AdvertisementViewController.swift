@@ -21,6 +21,13 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         return view
     }()
 
+    private lazy var loadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,13 +38,6 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }()
-
-    private lazy var loadingSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .large)
-        spinner.hidesWhenStopped = true
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        return spinner
     }()
 
     private lazy var advertisementImageView: UIImageView = {
@@ -120,12 +120,13 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setupScrollView()
         setupViews()
+        presenter.viewDidLoadEvent()
     }
 
     private func setupScrollView() {
+        view.backgroundColor = .systemBackground
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
 
@@ -224,9 +225,7 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
     }
 
     func showContent(_ advertisement: AdvertisementDetails) {
-        hideLoading()
-        hideError()
-
+        contentView.isHidden = false
         titleLabel.text = advertisement.title
         priceLabel.text = advertisement.price
         locationLabel.text = advertisement.location
@@ -241,8 +240,11 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         advertisementImageView.kf.setImage(with: url)
     }
 
+    func hideContent() {
+        contentView.isHidden = true
+    }
+
     func showError(_ error: String) {
-        hideLoading()
         errorView.configure(message: error)
         setupErrorView()
         errorView.isHidden = false
@@ -262,8 +264,7 @@ class AdvertisementViewController: UIViewController, AdvertisementViewProtocol {
         ])
         errorView.isHidden = true
         errorView.onRetryButtonTapped = { [weak self] in
-            self?.hideError()
-            self?.presenter.fetchAdvertisement()
+            self?.presenter.viewDidLoadEvent()
         }
     }
 }

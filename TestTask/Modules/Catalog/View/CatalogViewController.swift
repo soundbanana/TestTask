@@ -8,9 +8,24 @@
 import UIKit
 
 class CatalogViewController: UIViewController, CatalogViewProtocol {
+    // MARK: - Properties
+
     var presenter: CatalogPresenterProtocol!
 
     // MARK: - UI Elements
+
+    private lazy var errorView: ErrorView = {
+        let view = ErrorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var loadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
@@ -44,6 +59,51 @@ class CatalogViewController: UIViewController, CatalogViewProtocol {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+
+    // MARK: - CatalogViewProtocol
+
+    func showLoading() {
+        loadingSpinner = UIActivityIndicatorView(style: .large)
+        loadingSpinner.center = self.view.center
+        self.view.addSubview(loadingSpinner)
+        loadingSpinner.startAnimating()
+    }
+
+    func hideLoading() {
+        self.loadingSpinner.stopAnimating()
+    }
+
+    func showContent() {
+        collectionView.isHidden = false
+    }
+
+    func hideContent() {
+        collectionView.isHidden = true
+    }
+
+    func showError(_ error: String) {
+        errorView.configure(message: error)
+        setupErrorView()
+        errorView.isHidden = false
+    }
+
+    func hideError() {
+        errorView.isHidden = true
+    }
+
+    private func setupErrorView() {
+        view.addSubview(errorView)
+        NSLayoutConstraint.activate([
+            errorView.topAnchor.constraint(equalTo: view.topAnchor),
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        errorView.isHidden = true
+        errorView.onRetryButtonTapped = { [weak self] in
+            self?.presenter.viewDidLoadEvent()
+        }
     }
 
     // MARK: - UICollectionViewLayout
